@@ -41,7 +41,7 @@ python manage.py collectstatic --noinput --settings=core.settings.prod
 
 # Create superuser if environment variables are provided
 if [ -n "$DJANGO_SUPERUSER_USERNAME" ] && [ -n "$DJANGO_SUPERUSER_PASSWORD" ] && [ -n "$DJANGO_SUPERUSER_EMAIL" ]; then
-    python manage.py create_su --settings=core.settings.prod
+    python manage.py createsuperuser --settings=core.settings.prod
   echo "Super User created successfully!"
 fi
 
