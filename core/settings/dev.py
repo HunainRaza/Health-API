@@ -38,6 +38,12 @@ DATABASES = {
     }
 }
 
+# Supabase Storage Configuration
+SUPABASE_URL = os.environ.get('SUPABASE_URL')
+SUPABASE_ACCESS_KEY = os.environ.get('SUPABASE_ACCESS_KEY')  # The anon/public key
+SUPABASE_SECRET_KEY = os.environ.get('SUPABASE_SECRET_KEY')  # The service_role key (for more secure operations)
+SUPABASE_STORAGE_BUCKET_NAME = os.environ.get('SUPABASE_STORAGE_BUCKET_NAME')
+
 # CORS settings for development
 CORS_ALLOW_ALL_ORIGINS = True
 

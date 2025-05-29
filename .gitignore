@@ -6,6 +6,7 @@ __pycache__/
 dev.env
 media/
 staticfiles/
+Health-Record-API.docx
 
 # Ignore Django Migrations in Development if you are working on team
 **/migrations/**
