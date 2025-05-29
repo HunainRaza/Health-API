@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django_filters',
     'corsheaders',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
     # Local apps
     'users.apps.UsersConfig',
     'health.apps.HealthConfig',
