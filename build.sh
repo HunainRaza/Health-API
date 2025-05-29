@@ -9,28 +9,12 @@ echo "🏥 Starting Health Record API Build Process..."
 echo "📦 Installing Python requirements..."
 pip install -r requirements.txt
 
-# Show current migration status
-echo "📊 Current migration status:"
-python manage.py showmigrations --settings=core.settings.prod
+# Create any missing migrations
+echo "🔧 Creating migrations..."
+python manage.py makemigrations --settings=core.settings.prod
 
-echo "🔄 Checking for migration conflicts..."
-python manage.py migrate --fake contenttypes zero --settings=core.settings.prod || true
-python manage.py migrate --fake auth zero --settings=core.settings.prod || true
-python manage.py migrate --fake sessions zero --settings=core.settings.prod || true
-python manage.py migrate --fake sites zero --settings=core.settings.prod || true
-python manage.py migrate --fake account zero --settings=core.settings.prod || true
-python manage.py migrate --fake socialaccount zero --settings=core.settings.prod || true
-python manage.py migrate --fake authtoken zero --settings=core.settings.prod || true
-python manage.py migrate --fake users zero --settings=core.settings.prod || true
-python manage.py migrate --fake health zero --settings=core.settings.prod || true
-
-# Make fresh migrations
-echo "🔧 Creating fresh migrations..."
-python manage.py makemigrations users --settings=core.settings.prod
-python manage.py makemigrations health --settings=core.settings.prod
-
-# Apply all migrations from scratch with fake-initial
-echo "🚀 Applying all migrations with fake-initial..."
+# Apply all migrations with fake-initial (handles existing tables)
+echo "⚙️  Applying all migrations..."
 python manage.py migrate --fake-initial --settings=core.settings.prod
 
 # Collect static files
