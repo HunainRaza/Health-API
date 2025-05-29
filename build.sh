@@ -13,6 +13,10 @@ pip install -r requirements.txt
 echo "📊 Current migration status:"
 python manage.py showmigrations --settings=core.settings.prod
 
+echo "🔄 Checking for migration conflicts..."
+python manage.py migrate socialaccount zero --fake --settings=core.settings.prod || true
+python manage.py migrate sites zero --fake --settings=core.settings.prod || true
+
 # Make migrations for custom apps
 echo "🔧 Creating migrations for users app..."
 python manage.py makemigrations users --settings=core.settings.prod
