@@ -9,12 +9,17 @@ echo "🏥 Starting Health Record API Build Process..."
 echo "📦 Installing Python requirements..."
 pip install -r requirements.txt
 
-# Create any missing migrations
-echo "🔧 Creating migrations..."
-python manage.py makemigrations --settings=core.settings.prod
+# Show current migration status
+echo "📊 Current migration status:"
+python manage.py showmigrations --settings=core.settings.prod
 
-# Apply all migrations with fake-initial (handles existing tables)
-echo "⚙️  Applying all migrations..."
+# Create migrations for custom apps only
+echo "🔧 Creating migrations for custom apps..."
+python manage.py makemigrations users --settings=core.settings.prod || true
+python manage.py makemigrations health --settings=core.settings.prod || true
+
+# Apply ALL migrations using fake-initial to handle existing tables
+echo "⚙️  Applying all migrations with fake-initial..."
 python manage.py migrate --fake-initial --settings=core.settings.prod
 
 # Collect static files
