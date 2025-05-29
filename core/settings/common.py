@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'users.middleware.TokenExpiryMiddleware',  # Custom token expiry middleware
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
