@@ -1,0 +1,13 @@
+.vscode
+.env
+env/
+*.pyc
+__pycache__/
+dev.env
+media/
+staticfiles/
+
+# Ignore Django Migrations in Development if you are working on team
+**/migrations/**
+**/migrations
+**/migrations/__init__.py
