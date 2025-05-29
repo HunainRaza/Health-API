@@ -14,8 +14,15 @@ echo "📊 Current migration status:"
 python manage.py showmigrations --settings=core.settings.prod
 
 echo "🔄 Checking for migration conflicts..."
-python manage.py migrate socialaccount zero --fake --settings=core.settings.prod || true
-python manage.py migrate sites zero --fake --settings=core.settings.prod || true
+python manage.py migrate --fake contenttypes zero --settings=core.settings.prod || true
+python manage.py migrate --fake auth zero --settings=core.settings.prod || true
+python manage.py migrate --fake sessions zero --settings=core.settings.prod || true
+python manage.py migrate --fake sites zero --settings=core.settings.prod || true
+python manage.py migrate --fake account zero --settings=core.settings.prod || true
+python manage.py migrate --fake socialaccount zero --settings=core.settings.prod || true
+python manage.py migrate --fake authtoken zero --settings=core.settings.prod || true
+python manage.py migrate --fake users zero --settings=core.settings.prod || true
+python manage.py migrate --fake health zero --settings=core.settings.prod || true
 
 # Make migrations for custom apps
 echo "🔧 Creating migrations for users app..."
