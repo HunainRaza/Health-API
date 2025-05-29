@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # Third party apps
     'allauth',
     'allauth.account',
@@ -141,6 +142,22 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
     ],
+}
+
+# Allauth settings
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # For development
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+SITE_ID = 1
+
+# DJ-Rest-Auth settings
+REST_AUTH = {
+    'USE_JWT': False,
+    'SESSION_LOGIN': False,
+    'REGISTER_SERIALIZER': 'users.serializers.UserRegisterSerializer',
 }
 
 # Token Configuration - 5 minutes as per requirements
