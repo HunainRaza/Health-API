@@ -34,9 +34,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Third party apps
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
@@ -57,7 +54,6 @@ MIDDLEWARE = [
     'users.middleware.TokenExpiryMiddleware',  # Custom token expiry middleware
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
